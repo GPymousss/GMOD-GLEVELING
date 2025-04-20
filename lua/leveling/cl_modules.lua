@@ -7,7 +7,8 @@ local function gClientCalculateExpForLevel(level)
 	return math.floor(100 * level * 1.5)
 end
 
-gNetReceive("gLevelingSync", function(data)
+net.Receive("gLevelingSync", function()
+	local data = gNetReceive()
 	playerLocalData.level = data.level
 	playerLocalData.exp = data.exp
 end)
